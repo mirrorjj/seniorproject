@@ -17,7 +17,7 @@
     <!-- Custom CSS -->
     <link href="<?=base_url('bootstrap/css/freelancer.css')?>" rel="stylesheet">
 
-    <link href="<?=base_url('bootstrap/activity/css/1-col-portfolio.css')?>" rel="stylesheet">
+    <!-- <link href="<?=base_url('bootstrap/activity/css/1-col-portfolio.css')?>" rel="stylesheet"> -->
 
     <!-- Custom Fonts -->
     <link href="<?=base_url('bootstrap/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
@@ -56,7 +56,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                        <h2>ผลลัพธ์การค้นหา</h2>
+                        <h2><br>ผลลัพธ์การค้นหา</h2>
                         <hr class="star-primary">
                         <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                         <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
@@ -77,12 +77,12 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="http://www.paigntonacademy.org/wp-content/uploads/2013/07/Badminton-700x300.jpg" alt="">
+                    <img class="img-responsive" src="https://margin0auto.files.wordpress.com/2011/02/css_displayblockdisplayinline_pic01.gif" width="400" height="500" alt="">
                 </a>
             </div>
             <div class="col-md-5">
                 <h3><?= $item->event_name ?></h3>
-                <h4>วันที่และเวลา <?= $item->event_datetime ?></h4>
+                <h4>วันที่และเวลา <?= $item->event_newdatetime ?></h4>
                 <h4>สถานที่ : <?= $item->event_where ?></h4>
                 <p><?= $item->event_detail ?></p>
                 <a class="btn btn-primary" href="#">ดูรายละเอียดกิจกรรม <span class="glyphicon glyphicon-chevron-right"></span></a>

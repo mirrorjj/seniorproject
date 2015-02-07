@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="<?=base_url('bootstrap/img/sports_icon.png')?>" width="500" height="500" alt="">
+                    <img class="img-responsive" src="<?=base_url('bootstrap/img/sports_icon.png')?>" width="400" height="400" alt="">
                     <div class="intro-text">
                         <span class="name">Meet & Do Activity Together</span>
                         <hr class="star-light">
@@ -53,17 +53,48 @@
         </div>
     </header>
 
-    <section id="portfolio">
+    <section id="portfolio" style="padding:70px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>!!! 5 กิจกรรมล่าสุด !!!</h2>
+                    <h2>
+                        <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        5 กิจกรรมใหม่ล่าสุด
+                        <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                    </h2>
                     <hr class="star-primary">
                 </div>
             </div>
         </div>
     </section>
 
+
+        <!-- Project One -->
+        <?php foreach($query as $item):?>
+        <div class="row" style="margin-left: auto; margin-right: auto; padding-left: 125px; padding-right: 125px;">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="https://margin0auto.files.wordpress.com/2011/02/css_displayblockdisplayinline_pic01.gif" width="400" height="500" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3><?= $item->event_name ?></h3>
+                <h4>วันที่และเวลา <?= $item->event_newdatetime ?></h4>
+                <h4>สถานที่ : <?= $item->event_where ?></h4>
+                <p><?= $item->event_detail ?></p>
+                <a class="btn btn-primary" href="#">ดูรายละเอียดกิจกรรม <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        
+        <!-- /.row -->
+
+        <hr>
+
+        <?php endforeach;?>
 
 
     <!-- Portfolio Grid Section -->

@@ -29,11 +29,15 @@ class Event extends CI_Controller {
         if($this->input->post("btsave")!=null){
 
             $match = $this->input->post('event_search');
-            $this->db->like('event_name',$match);
-            //$this->db->or_like('event_datetime',$match);
-            $this->db->or_like('event_where',$match);
-            $this->db->or_like('event_detail',$match);
-            $query = $this->db->get('event');
+            // $this->db->like('event_name',$match);
+            // $this->db->or_like('event_where',$match);
+            // $this->db->or_like('event_detail',$match);
+            // $query = $this->db->get('event');
+
+            $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event 
+                    WHERE event_name LIKE '%$match%' OR event_where LIKE '%$match%' OR event_detail LIKE '%$match%'";
+
+            $query = $this->db->query($sql);        
 
 
             if($query->num_rows() == 0){
@@ -44,14 +48,6 @@ class Event extends CI_Controller {
 
         }
         $this->load->view("searcheventresult", $data);
-    }
-    public function upcomingevent(){
-        $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id DESC LIMIT 5";
-        $rs = $this->db->query($sql);
-        
-        $data['rs'] = $rs->result_array();
-
-        $this->load->view('welcome_message',$data);
     }
 }
 

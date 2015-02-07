@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- <a class="navbar-brand" href="#page-top">Just Play</a> -->
-                <a class="navbar-brand" href="<?=base_url()?>">Just Play</a>
+                <a class="navbar-brand" href="<?=base_url('welcome/index')?>">Just Play</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,7 +33,7 @@
                         <a href="<?=base_url('signin')?>">เข้าสู่ระบบ</a>
                     </li>
 
-                    <li class="dropdown">
+                    <li class="dropdown-responsive">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">เมนู <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
                         <li class="page-scroll">

@@ -19,7 +19,12 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id DESC LIMIT 5";
+        $query = $this->db->query($sql);
+        
+        $data['query'] = $query->result();
+
+        $this->load->view('welcome_message',$data);
 	}
 	public function aboutus(){
 		$this->load->view('aboutus');

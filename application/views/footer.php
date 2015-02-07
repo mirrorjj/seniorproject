@@ -4,12 +4,11 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">
-                        <h3>ศูนย์กีฬาแห่งจุฬาลงกรณ์มหาวิทยาลัย</h3>
-                        <p>254 ถนนพญาไท แขวงวังใหม่ <br>เขตปทุมวัน กทม. 10330 <br> Tel.0-2218-2874-7, 0-2218-2840 <br> <a target = '_blank' href="http://www.cusc.chula.ac.th">www.cusc.chula.ac.th</a></p>
+                        <h3 style="font-size: 20px;">ศูนย์กีฬาแห่งจุฬาลงกรณ์มหาวิทยาลัย</h3>
+                        <p style="font-size: 15px;">254 ถนนพญาไท แขวงวังใหม่ <br>เขตปทุมวัน กทม. 10330 <br> Tel.0-2218-2874-7, 0-2218-2840 <br> <a target = '_blank' href="http://www.cusc.chula.ac.th">www.cusc.chula.ac.th</a></p>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>ติดตามความเคลื่อนไหว</h3>
-                        <h3>ของศูนย์กีฬาฯ</h3>
+                        <h3 style="font-size: 20px;">ติดตามความเคลื่อนไหวของศูนย์กีฬาฯ</h3>
                         <ul class="list-inline">
                             <li>
                                 <a target = '_blank' href="https://www.facebook.com/cuscpage?fref=ts" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -29,8 +28,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Powered By</h3>
-                        <p>A Student Of Dept. Of <br> Computer Engineering. (2014)</p>
+                        <h3 style="font-size: 20px;">Powered By</h3>
+                        <p style="font-size: 15px;">A Student Of Dept. Of <br> Computer Engineering. (2014)</p>
                     </div>
                 </div>
             </div>
