@@ -10,7 +10,12 @@
 |
 */
 
-
+$hook['post_controller_constructor']=array(
+										"class"=>"onload",
+										"function"=>"check_login",
+										"filename"=>"onload.php",
+										"filepath"=>"hooks"
+									);
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

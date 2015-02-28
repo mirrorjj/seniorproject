@@ -29,9 +29,19 @@
                             </input>
                         </form>
                     </li>
-                    <li class="page-scroll">
-                        <a href="<?=base_url('signin')?>">เข้าสู่ระบบ</a>
-                    </li>
+
+                     <?php
+                        if(!isset($sess)){
+                    ?>
+                        <li class="page-scroll">
+                            <a href="<?=base_url('welcome/login')?>">เข้าสู่ระบบ</a>
+                        </li>
+                    <?php
+                        } else {
+                        echo "<li class='page-scroll' style='padding-top: 19.5px; padding-bottom: 19.5px; color:white;'>ยินดีต้อนรับคุณ ".$sess."</li>";
+                        echo "<li class='page-scroll'><a href=".base_url('user/signout').">ออกจากระบบ</a></li>";
+                        }
+                    ?>
 
                     <li class="dropdown-responsive">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">เมนู <span class="caret"></span></a>
@@ -39,12 +49,37 @@
                         <li class="page-scroll">
                                 <a target = '_blank' href="https://docs.google.com/spreadsheet/ccc?key=0AssdgRUsKGQqdGVvcEduejNKWkRpVmtGZ3NDUnpUb1E&usp=sharing#gid=9">ตารางการใช้สนามศูนย์กีฬา จุฬาฯ</a>
                             </li>
+                            <?php
+                                if(isset($sess)){
+                                    foreach($user_info as $r){
+                                        if($r['user_status'] == "privileged user"){
+                            ?>
                             <li class="page-scroll">
                                 <a href="<?=base_url('user/manageevent')?>">จัดการกิจกรรม</a>
                             </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            ?>
+                            <?php
+                                if(isset($sess)){
+                                    foreach($user_info as $r){
+                                        if($r['user_status'] == "user"){
+                            ?>
+                            <li class="page-scroll">
+                                <a href="<?=base_url('user/manageevent')?>">สมัครเป็น privileged user</a>
+                            </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            ?>
+                            <!--
                             <li class="page-scroll">
                                 <a href="<?=base_url('#portfolio')?>">กลุ่ม</a>
                             </li>
+                            -->
                             <li class="divider"></li>
                             <li class="page-scroll">
                                 <a href="<?=base_url('welcome/aboutus')?>">เกี่ยวกับเรา</a>

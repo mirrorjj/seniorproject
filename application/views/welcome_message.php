@@ -37,6 +37,8 @@
 
 	<?php include 'header.php';?>
 
+    
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -52,8 +54,9 @@
             </div>
         </div>
     </header>
+    
 
-    <section id="portfolio" style="padding:70px;">
+    <section style="padding:70px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -75,18 +78,20 @@
 
         <!-- Project One -->
         <?php foreach($query as $item):?>
-        <div class="row" style="margin-left: auto; margin-right: auto; padding-left: 125px; padding-right: 125px;">
+        <div class="row" style="margin-left: 50px; margin-right: 50px; padding-left: 125px; padding-right: 125px; border:10px solid #ccc; background:#f5f5f5;-moz-border-radius:4px;-webkit-border-radius:10px;border-radius:10px;">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="https://margin0auto.files.wordpress.com/2011/02/css_displayblockdisplayinline_pic01.gif" width="400" height="500" alt="">
+                    <img class="img-responsive" src="<?= $item->event_picture ?>" style="width:400px; height:300px;" alt="">
                 </a>
             </div>
             <div class="col-md-5">
                 <h3><?= $item->event_name ?></h3>
+                <h4>เจ้าของกิจกรรม : <?= $item->event_who_create ?></h4>
                 <h4>วันที่และเวลา <?= $item->event_newdatetime ?></h4>
                 <h4>สถานที่ : <?= $item->event_where ?></h4>
-                <p><?= $item->event_detail ?></p>
-                <a class="btn btn-primary" href="#">ดูรายละเอียดกิจกรรม <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <p>รายละเอียด : <?= $item->event_detail ?></p>
+                <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a>
+                <a class="btn btn-success" href="#">เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></a>
             </div>
         </div>
         
@@ -98,6 +103,7 @@
 
 
     <!-- Portfolio Grid Section -->
+    <!--
     <section id="portfolio">
         <div class="container">
             <div class="row">
@@ -111,7 +117,7 @@
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 แบดมินตัน
                             </div>
                         </div>
@@ -122,7 +128,7 @@
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 วอลเลย์บอล
                             </div>
                         </div>
@@ -133,7 +139,7 @@
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 บาสเกตบอล
                             </div>
                         </div>
@@ -144,7 +150,7 @@
                     <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 ฟุตซอล
                             </div>
                         </div>
@@ -155,7 +161,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 ตะกร้อ
                             </div>
                         </div>
@@ -166,7 +172,7 @@
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 เทเบิลเทนนิส
                             </div>
                         </div>
@@ -177,7 +183,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 กอล์ฟ
                             </div>
                         </div>
@@ -188,7 +194,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 วอลเลย์บอลชายหาด
                             </div>
                         </div>
@@ -199,7 +205,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 เทนนิส
                             </div>
                         </div>
@@ -210,7 +216,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <!-- <i class="fa fa-search-plus fa-3x"></i> -->
+                                <i class="fa fa-search-plus fa-3x"></i>
                                 ว่ายน้ำ
                             </div>
                         </div>
@@ -220,7 +226,16 @@
             </div>
         </div>
     </section>
-
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <iframe src="https://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fcuscpage&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=true&amp;height=700" scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:800px; height:570px; background: white; float:none; " allowTransparency="true" class="fb-like-box"></iframe><br/><br/>
+                </center>
+            </div>
+        </div>
+    </div>
 
 
     

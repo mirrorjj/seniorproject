@@ -19,15 +19,61 @@ class User extends CI_Controller {
 	 */
 	public function __construct(){
 		parent::__construct();
+		$this->load->library("session");
+		$this->load->helper('url');
 	}
 	public function index()
 	{
 
 	}
+	public function signin(){
+		
+		$query = $this->db->query("SELECT * FROM user WHERE username='".$this->input->post('username')."' AND password='".$this->input->post('password')."'");	
+		//$result = $query->result();
+
+		//$data['user_info'] = $query->result_array();
+
+		if($query->num_rows() > 0){
+			$ar=array(
+					"mysess_id"=>$this->input->post("username"),
+					"user_info"=>$query->result_array()
+				);
+			$this->session->set_userdata($ar);
+		}
+		if($this->session->userdata("mysess_id")==null){
+			$data['query']=$result;
+			$data['wrong']="คุณกรอก username หรือ password ผิดกรุณาลองใหม่";
+			$this->load->view("signin",$data);
+			//redirect("welcome/login","refresh");
+		} else {
+			$data['sess'] = $this->session->userdata("mysess_id");
+			$data['user_info'] = $this->session->userdata("user_info");
+
+			//show last 5 event
+			$sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id DESC LIMIT 5";
+	        $query = $this->db->query($sql);
+	        
+	        $data['query'] = $query->result();
+	        //show last 5 event
+
+		}
+		$this->load->view("welcome_message",$data);
+	}
+	public function signout(){
+		$this->session->sess_destroy();
+		redirect("welcome/index","refresh");
+		exit();
+	}
 	public function addevent(){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
 
 		if($this->input->post("btsave")!=null){
 			$ar = array(
+			"event_picture"=>$this->input->post("event_picture"),
 			"event_name"=>$this->input->post("event_name"),
 			"event_datetime"=>$this->input->post("event_datetime"),
 			"event_where"=>$this->input->post("event_where"),
@@ -38,9 +84,14 @@ class User extends CI_Controller {
 			redirect("user/manageevent","refresh");
 			exit();
 		}
-		$this->load->view("addevent");
+		$this->load->view("addevent",$data);
 	}
 	public function editevent($id){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
 		
 		if($this->input->post("btsave")!=null){
 			$ar = array(
@@ -71,10 +122,17 @@ class User extends CI_Controller {
 		exit();
 	}
 	public function manageevent(){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
 		$sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id ASC";
 		$rs = $this->db->query($sql);
 		
 		$data['rs'] = $rs->result_array();
+
 
 		$this->load->view('manageevent',$data);
 	}

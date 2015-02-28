@@ -17,8 +17,16 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct(){
+        parent::__construct();
+        $this->load->library("session");
+        $this->load->helper('url');
+    }
 	public function index()
 	{
+
+		
+
         $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id DESC LIMIT 5";
         $query = $this->db->query($sql);
         
@@ -27,10 +35,25 @@ class Welcome extends CI_Controller {
         $this->load->view('welcome_message',$data);
 	}
 	public function aboutus(){
-		$this->load->view('aboutus');
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
+		$this->load->view('aboutus',$data);
 	}
 	public function contactus(){
-		$this->load->view('contactus');
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
+		$this->load->view('contactus',$data);
+	}
+	public function login(){
+		$this->load->view('signin');
 	}
 }
 

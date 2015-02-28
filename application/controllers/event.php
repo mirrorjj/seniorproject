@@ -17,14 +17,35 @@ class Event extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
+    public function __construct(){
+        parent::__construct();
+        $this->load->library("session");
+        $this->load->helper('url');
+    }
     public function index()
     {
-        //$this->load->view('viewevent');
+
     }
-    public function viewevent(){
-        $this->load->view('viewevent');
-    }
+    // public function viewevent(){
+    //     $this->load->view('viewevent');
+    // }
     public function searchevent(){
+
+        //session
+        $data['sess'] = $this->session->userdata("mysess_id");
+        $data['user_info'] = $this->session->userdata("user_info");
+        //session
+
+        $this->load->library("pagination");
+
+        $config['base_url']=base_url("event/searchevent");
+        $config['per_page']=5;
+        $config['total_rows']=$this->db->count_all("event");
+
+        $config['full_tag_open']="<div class='pagination'>";
+        $config['full_tag_close']="</div>";
+
+        $this->pagination->initialize($config);
 
         if($this->input->post("btsave")!=null){
 
@@ -43,10 +64,14 @@ class Event extends CI_Controller {
             if($query->num_rows() == 0){
                 $data['query']= array();
             } else {
-                $data['query']=$query->result();
+                //$data['query']=$query->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+                $data['query']=$query->result_array();
             }
 
+
+            //$data['query'] = $this->db->select("event_id,event_name,event_datetime,event_where,event_detail,event_who_create,event_picture")->from("event")->like("event_name",$match)->or_like("event_where",$match)->or_like("event_detail",$match)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
         }
+
         $this->load->view("searcheventresult", $data);
     }
 }

@@ -77,6 +77,21 @@
                         <!-- <form name="sentMessage" id="contactForm" novalidate> -->
 
                         <?php echo form_open('user/addevent'); ?>
+
+                            <center>
+                                    <img class="img-responsive" style="width:400px; height:300px;" alt=""
+                                    src=""><br>
+                            </center>
+                            
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>รูปภาพกิจกรรม</label>
+                                    <input type="text" class="form-control" id="pictureurl" placeholder="ใส่ url รูปภาพกิจกรรม เช่น http://users.telenet.be/badmintonclubdehaan/images/812104-shuttlecock-and-badminton.jpg" 
+                                        value="" 
+                                        name="event_picture" required data-validation-required-message="Please enter your event picture.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>ชื่อกิจกรรม</label>

@@ -39,7 +39,7 @@
 
 
     <!-- Page Content -->
-    <div class="container">
+    <!-- <div class="container"> -->
 
         <!-- Page Heading -->
         <!-- <div class="row">
@@ -65,27 +65,31 @@
         </div>
     </section>
 
-        <?php if($query == array()){
-            echo "<div class=\"col-lg-12 text-center\">";
-            echo "<h3>ไม่พบผลลัพธ์ กรุณาลองใหม่อีกครั้ง TT<br><br><br></h3>";
-            echo "</div>";
-        } else {
+        <?php 
+            if(count($query) == 0){
+                echo "<div class=\"col-lg-12 text-center\">"."<h3>ไม่พบผลลัพธ์ กรุณาลองใหม่อีกครั้ง TT<br><br><br></h3>"."</div>";
+            } else {
         ?>
 
         <!-- Project One -->
-        <?php foreach($query as $item):?>
-        <div class="row">
+        <?php 
+            $no = $this->uri->segment(3)+1;
+            foreach($query as $item){
+        ?>
+        <div class="row" style="margin-left: 50px; margin-right: 50px; padding-left: 125px; padding-right: 125px; border:10px solid #ccc; background:#f5f5f5;-moz-border-radius:4px;-webkit-border-radius:10px;border-radius:10px;">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="https://margin0auto.files.wordpress.com/2011/02/css_displayblockdisplayinline_pic01.gif" width="400" height="500" alt="">
+                    <img class="img-responsive" src="<?= $item['event_picture'] ?>" style="width:400px; height:300px;" alt="">
                 </a>
             </div>
             <div class="col-md-5">
-                <h3><?= $item->event_name ?></h3>
-                <h4>วันที่และเวลา <?= $item->event_newdatetime ?></h4>
-                <h4>สถานที่ : <?= $item->event_where ?></h4>
-                <p><?= $item->event_detail ?></p>
-                <a class="btn btn-primary" href="#">ดูรายละเอียดกิจกรรม <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <h3>ชื่อกิจกรรม : <?= $item['event_name'] ?></h3>
+                <h4>เจ้าของกิจกรรม : <?= $item['event_who_create'] ?></h4>
+                <h4>วันที่และเวลา : <?= $item['event_newdatetime'] ?></h4>
+                <h4>สถานที่ : <?= $item['event_where'] ?></h4>
+                <p>รายละเอียด : <?= $item['event_detail'] ?></p>
+                <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a>
+                <a class="btn btn-success" href="#">เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></a>
             </div>
         </div>
         
@@ -93,12 +97,14 @@
 
         <hr>
 
-        <?php endforeach;
+        <?php 
+                $no++;
+                }
             }
         ?>
 
         <!-- Pagination -->
-        <div class="row text-center">
+<!--         <div class="row text-center">
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
@@ -124,8 +130,12 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <!-- /.row -->
+
+<!--         <?php 
+            echo $this->pagination->create_links();
+        ?> -->
 
         <hr>
 
@@ -145,13 +155,13 @@
 
     <?php include 'footer.php';?>
 
+
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll visible-xs visble-sm">
+    <div class="scroll-top page-scroll">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-
 
     <!-- jQuery -->
     <script src="<?=base_url('bootstrap/js/jquery.js')?>"></script>
