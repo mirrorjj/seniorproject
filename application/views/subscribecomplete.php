@@ -56,7 +56,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                        <h2><br>ผลลัพธ์การค้นหา</h2>
+                        <h2><br>ส่งเอกสารเรียบร้อย</h2>
                         <hr class="star-primary">
                         <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                         <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
@@ -65,92 +65,9 @@
         </div>
     </section>
 
-        <?php 
-            if(count($query) == 0){
-                echo "<div class='col-lg-12 text-center' style='margin-top:-30px;'>"."<h3>ไม่พบผลลัพธ์ กรุณาลองใหม่อีกครั้ง TT</h3>"."</div>";
-                echo "<br><br><br>";
-            } else {
-        ?>
-
-        <!-- Project One -->
-        <?php 
-            $no = $this->uri->segment(3)+1;
-            foreach($query as $item){
-        ?>
-        <div class="row" style="margin-left: 50px; margin-right: 50px; padding-left: 125px; padding-right: 125px; border:10px solid #ccc; background:#f5f5f5;-moz-border-radius:4px;-webkit-border-radius:10px;border-radius:10px;">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="<?= $item['event_picture'] ?>" style="width:400px; height:300px;" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>ชื่อกิจกรรม : <?= $item['event_name'] ?></h3>
-                <h4>เจ้าของกิจกรรม : <?= $item['event_who_create'] ?></h4>
-                <h4>วันที่และเวลา : <?= $item['event_newdatetime'] ?></h4>
-                <h4>สถานที่ : <?= $item['event_where'] ?></h4>
-                <p>รายละเอียด : <?= $item['event_detail'] ?></p>
-                <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a>
-                <a class="btn btn-success" href="#">เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></a>
-            </div>
-        </div>
-        
-        <!-- /.row -->
-
-        <hr>
-
-        <?php 
-                $no++;
-                }
-            }
-        ?>
-
-        <!-- Pagination -->
-<!--         <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-        <!-- /.row -->
-
-<!--         <?php 
-            echo $this->pagination->create_links();
-        ?> -->
-
-        <hr>
-
-        <!-- Footer -->
-        <!-- <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        <!-- </footer> -->
-
-    <!-- /.container -->
+    <div class='col-lg-12 text-center' style='margin-top:-30px;'>
+        <h3>ขอบคุณสำหรับการสมัคร โปรดรอการอนุมัติจากผู้ดูแลระบบ</h3>
+    </div><br><br><br><br><br>
 
 
     <?php include 'footer.php';?>

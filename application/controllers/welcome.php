@@ -25,6 +25,10 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
 		
 
         $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id DESC LIMIT 5";

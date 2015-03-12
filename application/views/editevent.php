@@ -59,6 +59,27 @@
                         <!-- <form name="sentMessage" id="contactForm" novalidate> -->
 
                         <?php echo form_open('user/editevent/'.$rs['event_id']); ?>
+
+                            <script>
+                                    function loadPic() {
+                                        document.getElementById("image").src=document.getElementById("pictureurl").value;
+                                    }
+                            </script>
+
+                            <center>
+                                    <img class="img-responsive" src="<?php echo $rs['event_picture']; ?>" id="image" style="width:400px; height:300px;" alt=""><br>
+                            </center>
+                            
+
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>รูปภาพกิจกรรม</label>
+                                    <input type="text" class="form-control" id="pictureurl"  onkeyup="loadPic();" placeholder="ใส่ url รูปภาพกิจกรรม เช่น http://users.telenet.be/badmintonclubdehaan/images/812104-shuttlecock-and-badminton.jpg" 
+                                        value="<?php echo $rs['event_picture']; ?>" 
+                                        name="event_picture" required data-validation-required-message="Please enter your event picture.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>ชื่อกิจกรรม</label>
@@ -84,13 +105,6 @@
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>รายละเอียดกิจกรรม</label>
                                     <textarea rows="5" class="form-control" placeholder="รายละเอียดกิจกรรม" name="event_detail" required data-validation-required-message="Please enter a message."><?php echo $rs['event_detail']; ?></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>ผู้จัดกิจกรรม</label>
-                                    <input type="text" class="form-control" placeholder="ผู้จัดกิจกรรม" name="event_who_create" required data-validation-required-message="Please enter your event who create." value="<?php echo $rs['event_who_create']; ?>">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>

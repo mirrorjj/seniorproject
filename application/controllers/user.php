@@ -60,6 +60,11 @@ class User extends CI_Controller {
 		$this->load->view("welcome_message",$data);
 	}
 	public function signout(){
+		$ar=array(
+					"mysess_id"=>"",
+					"user_info"=>""
+				);
+		$this->session->unset_userdata($ar);
 		$this->session->sess_destroy();
 		redirect("welcome/index","refresh");
 		exit();
@@ -95,11 +100,11 @@ class User extends CI_Controller {
 		
 		if($this->input->post("btsave")!=null){
 			$ar = array(
+			"event_picture"=>$this->input->post("event_picture"),
 			"event_name"=>$this->input->post("event_name"),
 			"event_datetime"=>$this->input->post("event_datetime"),
 			"event_where"=>$this->input->post("event_where"),
-			"event_detail"=>$this->input->post("event_detail"),
-			"event_who_create"=>$this->input->post("event_who_create")
+			"event_detail"=>$this->input->post("event_detail")
 			);
 			$this->db->where("event_id", $id);
 			$this->db->update("event",$ar);
@@ -128,13 +133,31 @@ class User extends CI_Controller {
 		$data['user_info'] = $this->session->userdata("user_info");
 		//session
 
-		$sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id ASC";
+		$sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event WHERE event_who_create='$data[sess]' ORDER BY event_id ASC";
 		$rs = $this->db->query($sql);
 		
 		$data['rs'] = $rs->result_array();
 
 
 		$this->load->view('manageevent',$data);
+	}
+	public function subscribetoprivileged(){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
+		if($this->input->post("btsave")!=null){
+			$ar = array(
+			"identification_picture"=>$this->input->post("identification_picture"),
+			"who"=>$this->input->post("who_subscribe")
+			);
+			$this->db->insert("subscribetoprivileged",$ar);
+			$this->load->view("subscribecomplete",$data);
+			//exit();
+		}
+		$this->load->view("subscribetoprivileged",$data);
 	}
 }
 

@@ -31,7 +31,7 @@
                     </li>
 
                      <?php
-                        if(!isset($sess)){
+                        if(!isset($sess)||empty($sess)){
                     ?>
                         <li class="page-scroll">
                             <a href="<?=base_url('welcome/login')?>">เข้าสู่ระบบ</a>
@@ -49,32 +49,40 @@
                         <li class="page-scroll">
                                 <a target = '_blank' href="https://docs.google.com/spreadsheet/ccc?key=0AssdgRUsKGQqdGVvcEduejNKWkRpVmtGZ3NDUnpUb1E&usp=sharing#gid=9">ตารางการใช้สนามศูนย์กีฬา จุฬาฯ</a>
                             </li>
+
+                            <!-- manage event-->
                             <?php
-                                if(isset($sess)){
-                                    foreach($user_info as $r){
+                                //error_reporting(E_WARNING);
+                                if(isset($sess)||!empty($sess)||isset($user_info)||!empty($user_info)){
+                                    foreach((array)$user_info as $r){
                                         if($r['user_status'] == "privileged user"){
                             ?>
-                            <li class="page-scroll">
-                                <a href="<?=base_url('user/manageevent')?>">จัดการกิจกรรม</a>
-                            </li>
+                                <li class="page-scroll">
+                                    <a href="<?=base_url('user/manageevent')?>">จัดการกิจกรรม</a>
+                                </li>
                             <?php
                                         }
                                     }
                                 }
                             ?>
+                            <!-- manage event-->
+
+                            <!-- register be privileged user-->
                             <?php
-                                if(isset($sess)){
-                                    foreach($user_info as $r){
+                                if(isset($sess)||!empty($sess)||isset($user_info)||!empty($user_info)){
+                                    foreach((array)$user_info as $r){
                                         if($r['user_status'] == "user"){
                             ?>
-                            <li class="page-scroll">
-                                <a href="<?=base_url('user/manageevent')?>">สมัครเป็น privileged user</a>
-                            </li>
+                                <li class="page-scroll">
+                                    <a href="<?=base_url('user/subscribetoprivileged')?>">สมัครเป็น privileged user</a>
+                                </li>
                             <?php
                                         }
                                     }
                                 }
                             ?>
+                            <!-- register be privileged user-->
+
                             <!--
                             <li class="page-scroll">
                                 <a href="<?=base_url('#portfolio')?>">กลุ่ม</a>

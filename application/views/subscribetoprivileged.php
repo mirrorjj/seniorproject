@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <br><br>
-                        <h2>สร้างกิจกรรม</h2>
+                        <h2>สมัครเป็น privileged member</h2>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                         <!-- <form name="sentMessage" id="contactForm" novalidate> -->
 
-                        <?php echo form_open('user/addevent'); ?>
+                        <?php echo form_open('user/subscribetoprivileged'); ?>
 
                             <script>
                                     function loadPic() {
@@ -91,48 +91,17 @@
 
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>รูปภาพกิจกรรม</label>
-                                    <input type="text" class="form-control" id="pictureurl"  onkeyup="loadPic();" placeholder="ใส่ url รูปภาพกิจกรรม เช่น http://users.telenet.be/badmintonclubdehaan/images/812104-shuttlecock-and-badminton.jpg" 
+                                    <label>สำเนาบัตรประชาชน</label>
+                                    <input type="text" class="form-control" id="pictureurl"  onkeyup="loadPic();" placeholder="ใส่ url สำเนาบัตรประชาชน เช่น http://www.amulet2u.com/board/images/board/1_1325522925.jpg" 
                                         value="" 
-                                        name="event_picture" required data-validation-required-message="Please enter your event picture.">
+                                        name="identification_picture" required data-validation-required-message="Please enter your event picture.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>ชื่อกิจกรรม</label>
-                                    <input type="text" class="form-control" placeholder="ชื่อกิจกรรม" name="event_name" required data-validation-required-message="Please enter your event name.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    
-                                        <label>วัน/เวลาที่จัดกิจกรรม YYYY-MM-DD HH:MM:SS</label>
-                                        <input type="text" class="form-control" placeholder="วัน/เวลาที่จัดกิจกรรม YYYY-MM-DD HH:MM:SS" name="event_datetime" required data-validation-required-message="Please enter your event datetime.">
-
-                                        <p class="help-block text-danger"></p>
-
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>สถานที่จัดกิจกรรม</label>
-                                    <input type="text" class="form-control" placeholder="สถานที่จัดกิจกรรม" name="event_where" required data-validation-required-message="Please enter your event place.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>รายละเอียดกิจกรรม</label>
-                                    <textarea rows="5" class="form-control" placeholder="รายละเอียดกิจกรรม" name="event_detail" required data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>ผู้จัดกิจกรรม</label>
-                                    <input type="text" class="form-control" value="<?= $sess; ?>" readonly placeholder="ผู้จัดกิจกรรม" name="event_who_create" required data-validation-required-message="Please enter your event who create.">
+                                    <label>ผู้สมัคร</label>
+                                    <input type="text" class="form-control" value="<?= $sess; ?>" readonly placeholder="ผู้สมัคร" name="who_subscribe" required data-validation-required-message="Please enter your event who create.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -140,8 +109,7 @@
                             <div id="success"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <input type="submit" class="btn btn-success btn-lg" name="btsave" value="สร้างกิจกรรม"/>
-                                    <button type="button" class="btn btn-danger btn-lg" onclick="window.location='<?=base_url('user/manageevent')?>'; ">ย้อนกลับ</button>
+                                    <input type="submit" class="btn btn-success btn-lg" name="btsave" value="ส่งเอกสาร"/>
                                 </div>
                             </div>
                         <?php echo form_close(); ?>
