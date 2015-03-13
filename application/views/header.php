@@ -67,6 +67,23 @@
                             ?>
                             <!-- manage event-->
 
+                            <!-- admin part-->
+                            <?php
+                                //error_reporting(E_WARNING);
+                                if(isset($sess)||!empty($sess)||isset($user_info)||!empty($user_info)){
+                                    foreach((array)$user_info as $r){
+                                        if($r['user_status'] == "admin"){
+                            ?>
+                                <li class="page-scroll">
+                                    <a href="<?=base_url('adminuser/manageuser')?>">จัดการสมาชิก</a>
+                                </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            ?>
+                            <!-- admin part-->
+
                             <!-- register be privileged user-->
                             <?php
                                 if(isset($sess)||!empty($sess)||isset($user_info)||!empty($user_info)){
