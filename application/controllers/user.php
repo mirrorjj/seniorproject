@@ -29,9 +29,9 @@ class User extends CI_Controller {
 	public function signin(){
 		
 		$query = $this->db->query("SELECT * FROM user WHERE username='".$this->input->post('username')."' AND password='".$this->input->post('password')."'");	
-		//$result = $query->result();
+		$result = $query->result();
 
-		//$data['user_info'] = $query->result_array();
+		$data['user_info'] = $query->result_array();
 
 		if($query->num_rows() > 0){
 			$ar=array(
@@ -158,6 +158,59 @@ class User extends CI_Controller {
 			//exit();
 		}
 		$this->load->view("subscribetoprivileged",$data);
+	}
+	public function cancelevent(){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
+		$sql = "SELECT event.event_id,event.event_name,event.event_datetime,event.event_where,event.event_detail,whojoinevent.eventid,whojoinevent.who_join, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event,whojoinevent WHERE (event.event_id=whojoinevent.eventid) AND (whojoinevent.who_join='$data[sess]') ORDER BY event_id ASC";
+		$rs = $this->db->query($sql);
+		
+		$data['rs'] = $rs->result_array();
+
+
+		$this->load->view('cancelevent',$data);
+
+	}
+
+	public function deletejoinevent($id){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
+		$this->db->where('who_join',$data['sess']);
+		$this->db->where('eventid',$id);
+		$this->db->delete('whojoinevent');
+		redirect("user/cancelevent","refresh");
+		exit();
+	}
+
+	public function joinevent($id){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+
+
+		$array=array(
+				"eventid"=>$id,
+				"who_join"=>$data['sess']
+			);
+		//check duplicate record
+		$query = $this->db->select('*')->from('whojoinevent')->where( array('eventid'=>$id,'who_join'=>$data['sess']) )->get();
+		//check duplicate record
+		if($query->num_rows() == 0){
+			$this->db->insert("whojoinevent",$array);
+
+		}
+		redirect("user/cancelevent","refresh");
+		exit();
 	}
 }
 

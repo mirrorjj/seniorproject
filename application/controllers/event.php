@@ -36,6 +36,8 @@ class Event extends CI_Controller {
         $data['user_info'] = $this->session->userdata("user_info");
         //session
 
+
+        //pagination
         $this->load->library("pagination");
 
         $config['base_url']=base_url("event/searchevent");
@@ -46,6 +48,8 @@ class Event extends CI_Controller {
         $config['full_tag_close']="</div>";
 
         $this->pagination->initialize($config);
+        //pagination
+        
 
         if($this->input->post("btsave")!=null){
 
@@ -54,6 +58,18 @@ class Event extends CI_Controller {
             // $this->db->or_like('event_where',$match);
             // $this->db->or_like('event_detail',$match);
             // $query = $this->db->get('event');
+
+            //check number who join event
+            // $sqlno = "SELECT * FROM whojoinevent";
+
+            // $queryno = $this->db->query($sqlno);
+
+            // if($query->num_rows() == 0){
+            //     $data['queryno'] = array();
+            // } else {
+            //     $data['queryno'] = $queryno->result_array();
+            // }
+            //check number who join event
 
             $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event 
                     WHERE event_name LIKE '%$match%' OR event_where LIKE '%$match%' OR event_detail LIKE '%$match%'";

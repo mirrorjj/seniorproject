@@ -84,6 +84,24 @@
                             ?>
                             <!-- admin part-->
 
+                            <!-- cancel event part-->
+                            <?php
+                                //error_reporting(E_WARNING);
+                                if(isset($sess)||!empty($sess)||isset($user_info)||!empty($user_info)){
+                                    foreach((array)$user_info as $r){
+                                        if($r['user_status'] == "user" || $r['user_status'] == "privileged user"){
+                            ?>
+                                <li class="page-scroll">
+                                    <a href="<?=base_url('user/cancelevent')?>">ยกเลิกการเข้าร่วมกิจกรรม</a>
+                                </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            ?>
+                            <!-- cancel event part-->
+
+
                             <!-- register be privileged user-->
                             <?php
                                 if(isset($sess)||!empty($sess)||isset($user_info)||!empty($user_info)){
@@ -109,9 +127,11 @@
                             <li class="page-scroll">
                                 <a href="<?=base_url('welcome/aboutus')?>">เกี่ยวกับเรา</a>
                             </li>
+                            <!--
                             <li class="page-scroll">
                                 <a href="<?=base_url('welcome/contactus')?>">ติดต่อเรา</a>
                             </li>
+                            -->
                       </ul>
                     </li>
                     

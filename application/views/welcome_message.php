@@ -47,8 +47,11 @@
                     <img class="img-responsive" src="<?=base_url('bootstrap/img/sports_icon.png')?>" width="400" height="400" alt="">
                     <div class="intro-text">
                         <span class="name">Meet & Do Activity Together</span>
+                        <span class="name">นัดพบและทำกิจกรรมร่วมกัน</span>
                         <hr class="star-light">
-                        <span class="skills">Find New Friend - Find New Community - Exchange New Experience</span>
+                        <span class="skills">Find New Friend - Find New Community - Exchange New Experience</span><br>
+                        <span class="skills">พบเพื่อนใหม่ - พบสังคมใหม่ - แลกเปลี่ยนประสบการณ์ใหม่ๆ</span>
+
                     </div>
                 </div>
             </div>
@@ -61,13 +64,17 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>
+                        <!--
                         <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
                         <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
                         <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        -->
                         5 กิจกรรมใหม่ล่าสุด
+                        <!--
                         <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
                         <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
                         <img src="<?=base_url('bootstrap/img/exclamation_mark.gif')?>" width="10" height="10" class="img-responsive" alt="" style="display: inline;">
+                        -->
                     </h2>
                     <hr class="star-primary">
                 </div>

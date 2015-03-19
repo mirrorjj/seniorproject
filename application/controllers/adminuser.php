@@ -54,6 +54,14 @@ class Adminuser extends CI_Controller {
 			exit();
 
 	}
+	public function delconfirmuser($identification_picture){
+
+		//$this->db->where('who',$who);
+		$this->db->where('identification_picture',$identification_picture);
+		$this->db->delete('subscribetoprivileged');
+		redirect("adminuser/manageuser","refresh");
+		exit();
+	}
 }
 
 /* End of file welcome.php */

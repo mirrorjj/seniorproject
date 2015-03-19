@@ -66,36 +66,43 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <br><br>
-                        <h2>จัดการสมาชิก</h2>
+                        <h2>ยกเลิกการเข้าร่วมกิจกรรม</h2>
                         <hr class="star-primary">
                     </div>
                 </div>
-                <!--
-                <button type="button" class="btn btn-primary btn-lg" onclick="window.location='<?=base_url('user/addevent')?>'; ">สร้างกิจกรรม</button><br><br>
-                -->
+                <!-- <button type="button" class="btn btn-primary btn-lg" onclick="window.location='<?=base_url('user/addevent')?>'; ">สร้างกิจกรรม</button><br><br> -->
                 <div class="table-responsive">
                     <table class="table" border="1">
                         <thead>
                             <tr>
                                 <th>ลำดับ</th>
-                                <th>ชื่อสมาชิก</th>
-                                <th>Link เอกสารยืนยันตน</th>
-                                <th>ยืนยัน?</th>
-                                <th>ลบ?</th>
+                                <th>ชื่อกิจกรรม</th>
+                                <th>วัน/เวลา</th>
+                                <th>จัดที่</th>
+                                <th>รายละเอียด</th>
+                                <th>ยกเลิก?</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
                                 if(count($rs) == 0){
-                                    echo "<tr><td colspan='5' align='center'>-- ไม่มีผู้สมัคร -- </td></tr>";
+                                    echo "<tr><td colspan='6' align='center'>-- ไม่มีกิจกรรมที่เข้าร่วม -- </td></tr>";
                                 } else {
                                     $no = 1;
                                     foreach($rs as $r){
                                         echo "<tr>";
                                         echo "<td>$no</td>";
-                                        echo "<td>".$r['who']."</td>";
-                                        echo "<td>".$r['identification_picture']."</td>";
+                                        echo "<td>".$r['event_name']."</td>";
+                                        echo "<td>".$r['event_newdatetime']."</td>";
+                                        echo "<td>".$r['event_where']."</td>";
+                                        echo "<td>".$r['event_detail']."</td>";
+
+                                        // echo "<td>";
+                                        // echo " <button type=\"button\" class=\"btn btn-info\" 
+                                        // onclick=\"window.location='editevent/$r[event_id]'; \">
+                                        // <span class=\"fa fa-pencil\"></span> แก้ไข</button> ";
+                                        // echo "</td>";
 
                                         echo "<td>";
                                         
@@ -107,13 +114,13 @@
                             ?>
                                         <!-- Confirm Delete -->
 
-                                        <div class="modal fade" id="confirm-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        <h4 class="modal-title" id="myModalLabel">Confirmed</h4>
+                                                        <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
                                                     </div>
                                                 
                                                     <div class="modal-body">
@@ -123,8 +130,8 @@
                                                     </div>
                                                     
                                                     <div class="modal-footer">
-                                                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
-                                                        <a href="#" class="btn btn-success danger">ตกลง</a>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <a href="#" class="btn btn-danger danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,69 +139,21 @@
 
                                         <!-- <a data-href="delete.php?id=54" data-toggle="modal" data-target="#confirm-delete" href="#">Delete record #54</a> -->
 
-                                        <button type="button" class="btn btn-success" 
-                                        data-href="confirmuser/<?=$r['who']?>"
-                                        data-toggle="modal" data-target="#confirm-user" href="#">
-                                        ยืนยัน <span class="fa fa-question"></span></button>
+                                        <button type="button" class="btn btn-danger" 
+                                        data-href="deletejoinevent/<?=$r['event_id']?>"
+                                        data-toggle="modal" data-target="#confirm-delete" href="#">
+                                        <span class="fa fa-times"></span> ยกเลิก</button>
 
 
                                         <script>
-                                            $('#confirm-user').on('show.bs.modal', function(e) {
+                                            $('#confirm-delete').on('show.bs.modal', function(e) {
                                                 $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
                                                 
-                                                $('.debug-url').html('URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
+                                                $('.debug-url').html('Delete URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
                                             });
                                         </script>
 
                                         <!-- End Confirm Delete -->
-
-                            <?php
-                                        echo "</td>";
-                                        echo "<td>";
-                            ?>
-
-                            <!-- Confirm Delete -->
-
-                            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
-                                        </div>
-                                    
-                                        <div class="modal-body">
-                                            <!-- <p>You are about to delete one track url, this procedure is irreversible.</p> -->
-                                            <p>Do you want to proceed?</p>
-                                            <p class="debug-url"></p>
-                                        </div>
-                                        
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <a href="#" class="btn btn-danger danger">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <a data-href="delete.php?id=54" data-toggle="modal" data-target="#confirm-delete" href="#">Delete record #54</a> -->
-
-                            <button type="button" class="btn btn-danger" 
-                            data-href="delconfirmuser/<?=$r['identification_picture']?>"
-                            data-toggle="modal" data-target="#confirm-delete" href="#">
-                            <span class="fa fa-times"></span> ลบ</button>
-
-
-                            <script>
-                                $('#confirm-delete').on('show.bs.modal', function(e) {
-                                    $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
-                                    
-                                    $('.debug-url').html('Delete URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
-                                });
-                            </script>
-
-                            <!-- End Confirm Delete -->
 
                             <?php
                                         echo "</td>";
