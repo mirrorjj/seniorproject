@@ -88,7 +88,7 @@
                         <tbody>
                             <?php
                                 if(count($rs) == 0){
-                                    echo "<tr><td colspan='7' align='center'>-- ไม่มีกิจกรรม -- </td></tr>";
+                                    echo "<tr><td colspan='7' align='center'>-- ไม่มีกิจกรรมที่สร้าง -- </td></tr>";
                                 } else {
                                     $no = 1;
                                     foreach($rs as $r){

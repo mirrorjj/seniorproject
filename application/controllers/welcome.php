@@ -59,6 +59,23 @@ class Welcome extends CI_Controller {
 	public function login(){
 		$this->load->view('signin');
 	}
+	public function gotoregisterpage(){
+		$this->load->view('adduser');
+	}
+	public function adduser(){
+
+		if($this->input->post("btsave")!=null){
+			$ar = array(
+			"username"=>$this->input->post("username"),
+			"password"=>$this->input->post("password"),
+			"user_status"=>$this->input->post("user_status")
+			);
+			$this->db->insert("user",$ar);
+			$this->load->view("registeralready");
+			//exit();
+		}
+		//$this->load->view("welcome/login");
+	}
 }
 
 /* End of file welcome.php */

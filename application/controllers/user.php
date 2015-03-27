@@ -55,9 +55,9 @@ class User extends CI_Controller {
 	        
 	        $data['query'] = $query->result();
 	        //show last 5 event
-
+	        $this->load->view("welcome_message",$data);
 		}
-		$this->load->view("welcome_message",$data);
+		
 	}
 	public function signout(){
 		$ar=array(
@@ -197,6 +197,10 @@ class User extends CI_Controller {
 		$data['user_info'] = $this->session->userdata("user_info");
 		//session
 
+		if(!isset($data['sess'])||empty($data['sess'])){
+			redirect("welcome/login","refresh");
+			exit();
+		}
 
 		$array=array(
 				"eventid"=>$id,

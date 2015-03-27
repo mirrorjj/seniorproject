@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <br><br>
-                        <h2>สมัครเป็น privileged member</h2>
+                        <h2>สมัครสมาชิก</h2>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -76,14 +76,15 @@
                         <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                         <!-- <form name="sentMessage" id="contactForm" novalidate> -->
 
-                        <?php echo form_open('user/subscribetoprivileged'); ?>
+                        <?php echo form_open('welcome/adduser'); ?>
 
                             <script>
-                                    function loadPic() {
-                                        document.getElementById("image").src=document.getElementById("pictureurl").value;
-                                    }
+                                    // function loadPic() {
+                                    //     document.getElementById("image").src=document.getElementById("pictureurl").value;
+                                    // }
                             </script>
 
+                            <!--
                             <center>
                                     <img class="img-responsive" src="http://static4.wikia.nocookie.net/__cb20131121214007/destinypedia/images/7/71/Information_Icon.svg" id="image" style="width:400px; height:300px;" alt=""><br>
                             </center>
@@ -91,17 +92,33 @@
 
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>สำเนาบัตรประชาชน</label>
-                                    <input type="text" class="form-control" id="pictureurl"  onkeyup="loadPic();" placeholder="ใส่ url สำเนาบัตรประชาชน เช่น http://www.amulet2u.com/board/images/board/1_1325522925.jpg" 
+                                    <label>รูปภาพกิจกรรม</label>
+                                    <input type="text" class="form-control" id="pictureurl"  onkeyup="loadPic();" placeholder="ใส่ url รูปภาพกิจกรรม เช่น http://users.telenet.be/badmintonclubdehaan/images/812104-shuttlecock-and-badminton.jpg" 
                                         value="" 
-                                        name="identification_picture" required data-validation-required-message="Please enter your event picture.">
+                                        name="event_picture" required data-validation-required-message="Please enter your event picture.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            -->
+
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>ชื่อผู้ใช้</label>
+                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username" required data-validation-required-message="Please enter your username.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>รหัสผ่าน</label>
+                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password" required data-validation-required-message="Please enter your password.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls" style="border-bottom:0px;">
-                                    <label>ผู้สมัคร</label>
-                                    <input type="hidden" class="form-control" value="<?= $sess; ?>" readonly placeholder="ผู้สมัคร" name="who_subscribe" required data-validation-required-message="Please enter your event who create.">
+                                    <label>สถานะผู้ใช้</label>
+                                    <input type="hidden" class="form-control" value="user" readonly placeholder="สถานะผู้ใช้" name="user_status" required data-validation-required-message="Please enter your event who create.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -109,7 +126,8 @@
                             <div id="success"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <input type="submit" class="btn btn-success btn-lg" name="btsave" value="ส่งเอกสาร"/>
+                                    <input type="submit" class="btn btn-success btn-lg" name="btsave" value="สมัครสมาชิก"/>
+                                    <button type="button" class="btn btn-danger btn-lg" onclick="window.location='<?=base_url('welcome/index')?>'; ">ยกเลิก</button>
                                 </div>
                             </div>
                         <?php echo form_close(); ?>

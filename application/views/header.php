@@ -36,6 +36,9 @@
                         <li class="page-scroll">
                             <a href="<?=base_url('welcome/login')?>">เข้าสู่ระบบ</a>
                         </li>
+                        <li class="page-scroll">
+                            <a href="<?=base_url('welcome/gotoregisterpage')?>">สมัครสมาชิก</a>
+                        </li>
                     <?php
                         } else {
                         echo "<li class='page-scroll' style='padding-top: 19.5px; padding-bottom: 19.5px; color:white;'>ยินดีต้อนรับคุณ ".$sess."</li>";
