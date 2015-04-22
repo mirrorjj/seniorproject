@@ -99,8 +99,10 @@
 
         <!-- Project One -->
         <?php 
-            $no = $this->uri->segment(3)+1;
+            //$no = $this->uri->segment(3)+1;
+            $counter = 0;
             foreach($query as $item){
+                
         ?>
         <div class="row" style="margin-left: 50px; margin-right: 50px; padding-left: 125px; padding-right: 125px; border:10px solid #ccc; background:#f5f5f5;-moz-border-radius:4px;-webkit-border-radius:10px;border-radius:10px;">
             <div class="col-md-7">
@@ -114,10 +116,71 @@
                 <h4>วันที่และเวลา : <?= $item['event_newdatetime'] ?></h4>
                 <h4>สถานที่ : <?= $item['event_where'] ?></h4>
                 <p>รายละเอียด : <?= $item['event_detail'] ?></p>
-                <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a>
+                
+                <!-- <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a> -->
                 <!-- <a class="btn btn-success" href="#">เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></a> -->
 
-                <!-- Confirm Delete -->
+
+                <!-- Who Join Event -->
+
+                <div class="modal fade" id="whojoinevent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">รายชื่อผู้เข้าร่วมกิจกรรม</h4>
+                            </div>
+                        
+                            <div class="modal-body">
+                                <!-- <p>You are about to delete one track url, this procedure is irreversible.</p> -->
+                                <?php
+                                    foreach($querysql2 as $whojoin){
+                                        //for($i=0;$i<$numrows;$i++){
+                                            if($item['event_id'] == $whojoin['eventid']){
+                                                echo "<p>".$whojoin['who_join']."</p>";
+                                                
+                                                $counter++;
+                                                //$item['event_id']++;
+                                            }
+                                        //}
+
+                                    }
+                                    //$item['event_id'] = 0;
+                                    //$whojoin['eventid']++;
+                                ?>
+                                <!-- <p class="debug-url"></p> -->
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+                                <!-- <a href="#"  class="btn btn-success danger">ปิด</a> -->
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> ปิด</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <a data-href="delete.php?id=54" data-toggle="modal" data-target="#whojoinevent" href="#">Delete record #54</a> -->
+
+                <button type="button" class="btn btn-info" 
+                data-href="<?=base_url('user/joinevent')?><?php echo "/".$item['event_id']; ?>"
+                data-toggle="modal" data-target="#whojoinevent" href="#">
+                <?= $counter; ?> ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></button>
+
+
+                <script>
+                    $('#whojoinevent').on('show.bs.modal', function(e) {
+                        $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
+                        
+                        $('.debug-url').html('URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
+                    });
+                </script>
+
+                <!-- End Who Join Event -->
+
+
+                <!-- Confirm Join Event -->
 
                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -131,7 +194,7 @@
                             <div class="modal-body">
                                 <!-- <p>You are about to delete one track url, this procedure is irreversible.</p> -->
                                 <p>กดปุ่ม "ตกลง" เพื่อยืนยันการเข้าร่วมกิจกรรม?</p>
-                                <p class="debug-url"></p>
+                                <!-- <p class="debug-url"></p> -->
                             </div>
                             
                             <div class="modal-footer">
@@ -158,7 +221,7 @@
                     });
                 </script>
 
-                <!-- End Confirm Delete -->
+                <!-- End Confirm Join Event -->
 
             </div>
         </div>
@@ -168,9 +231,10 @@
         <hr>
 
         <?php 
-                $no++;
-                }
-            }
+                    //$no++;
+                    $counter = 0;
+                } //end foreach event
+            }// end else
         ?>
 
         <!-- Pagination -->
@@ -226,11 +290,14 @@
 
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <!--
     <div class="scroll-top page-scroll">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
+-->
+
 
 </body>
 

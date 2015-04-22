@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <br><br>
-                        <h2>สมัครเป็น privileged member</h2>
+                        <h2>สมัครเป็น privileged user</h2>
                         <hr class="star-primary">
                     </div>
                 </div>

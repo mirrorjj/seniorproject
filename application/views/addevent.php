@@ -130,13 +130,13 @@
                                 </div>
                             </div>
                             <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <div class="form-group col-xs-12 floating-label-form-group controls" style="border-bottom:0px;">
                                     <label>ผู้จัดกิจกรรม</label>
-                                    <input type="text" class="form-control" value="<?= $sess; ?>" readonly placeholder="ผู้จัดกิจกรรม" name="event_who_create" required data-validation-required-message="Please enter your event who create.">
+                                    <input type="hidden" class="form-control" value="<?= $sess; ?>" readonly placeholder="ผู้จัดกิจกรรม" name="event_who_create" required data-validation-required-message="Please enter your event who create.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
-                            <br>
+                            <!-- <br> -->
                             <div id="success"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">

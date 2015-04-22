@@ -34,7 +34,12 @@ class Welcome extends CI_Controller {
         $sql = "SELECT *, DATE_FORMAT(event.event_datetime,'%d/%m/%Y %H:%i:%s') AS event_newdatetime FROM event ORDER BY event_id DESC LIMIT 5";
         $query = $this->db->query($sql);
         
+        $sql2 = "SELECT * FROM whojoinevent ORDER BY eventid ASC";
+        $querysql2 = $this->db->query($sql2);
+
         $data['query'] = $query->result();
+        $data['querysql2'] = $querysql2->result_array();
+        $data['numrows'] = $querysql2->num_rows();
 
         $this->load->view('welcome_message',$data);
 	}
@@ -65,13 +70,25 @@ class Welcome extends CI_Controller {
 	public function adduser(){
 
 		if($this->input->post("btsave")!=null){
+			$username = $this->input->post("username");
 			$ar = array(
 			"username"=>$this->input->post("username"),
 			"password"=>$this->input->post("password"),
 			"user_status"=>$this->input->post("user_status")
 			);
+			//check duplicate record
+		$query = $this->db->select('*')->from('user')->where( 'username',$username )->get();
+		//check duplicate record
+		if($query->num_rows() > 0){
+			$data['query']=$query;
+			$data['wrong']="ชื่อผู้ใช้ นี้ถูกลงทะเบียนแล้ว กรุณาลองใหม่";
+			$this->load->view("adduser",$data);
+		} else if($query->num_rows() == 0){
 			$this->db->insert("user",$ar);
 			$this->load->view("registeralready");
+		}
+			
+			
 			//exit();
 		}
 		//$this->load->view("welcome/login");

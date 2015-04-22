@@ -67,7 +67,7 @@
 
     <div class='col-lg-12 text-center' style='margin-top:-30px;'>
         <h3>ขอบคุณสำหรับการสมัครสมาชิก สนุกกับ Just Play คลิก "เข้าสู่ระบบ"</h3>
-    </div><br><br><br><br><br>
+    </div><br><br><br><br><br><br><br>
 
 
     <?php include 'footer.php';?>

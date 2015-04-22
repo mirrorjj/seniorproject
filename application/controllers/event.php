@@ -76,12 +76,17 @@ class Event extends CI_Controller {
 
             $query = $this->db->query($sql);        
 
+            $sql2 = "SELECT * FROM whojoinevent ORDER BY eventid ASC";
+            $querysql2 = $this->db->query($sql2);
+
 
             if($query->num_rows() == 0){
-                $data['query']= array();
+                $data['query'] = array();
             } else {
                 //$data['query']=$query->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
-                $data['query']=$query->result_array();
+                $data['query'] = $query->result_array();
+                $data['querysql2'] = $querysql2->result_array();
+                $data['numrows'] = $querysql2->num_rows();
             }
 
 

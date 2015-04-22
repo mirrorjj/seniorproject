@@ -69,17 +69,19 @@
         <h3>ขอบคุณสำหรับการสมัคร โปรดรอการอนุมัติจากผู้ดูแลระบบ</h3>
     </div><br><br><br><br><br>
 
+    <br><br>
 
     <?php include 'footer.php';?>
 
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <!--
     <div class="scroll-top page-scroll">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-
+    -->
     <!-- jQuery -->
     <script src="<?=base_url('bootstrap/js/jquery.js')?>"></script>
 

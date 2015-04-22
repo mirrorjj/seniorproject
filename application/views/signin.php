@@ -59,8 +59,8 @@
                         <form name="sentMessage" id="contactForm" method="post" action="<?=base_url('user/signin')?>">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Username</label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username" id="username" required data-validation-required-message="Please enter your username.">
+                                    <label>ชื่อผู้ใช้</label>
+                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username" id="username" required data-validation-required-message="Please enter your username.">
                                     <p class="help-block text-danger">
                                         <?php
                                             if(!isset($query)){
@@ -74,8 +74,8 @@
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" required data-validation-required-message="Please enter your password.">
+                                    <label>รหัสผ่าน</label>
+                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password" id="password" required data-validation-required-message="Please enter your password.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                             <div id="success"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <button type="submit" name="btsave" class="btn btn-success btn-lg">Sign In</button>
+                                    <button type="submit" name="btsave" class="btn btn-success btn-lg">เข้าสู่ระบบ</button>
                                 </div>
                             </div>
                         </form>

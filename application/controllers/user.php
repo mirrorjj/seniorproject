@@ -42,7 +42,7 @@ class User extends CI_Controller {
 		}
 		if($this->session->userdata("mysess_id")==null){
 			$data['query']=$result;
-			$data['wrong']="คุณกรอก username หรือ password ผิดกรุณาลองใหม่";
+			$data['wrong']="คุณกรอก ชื่อผู้ใช้ หรือ รหัสผ่าน ผิดกรุณาลองใหม่";
 			$this->load->view("signin",$data);
 			//redirect("welcome/login","refresh");
 		} else {
@@ -141,6 +141,15 @@ class User extends CI_Controller {
 
 		$this->load->view('manageevent',$data);
 	}
+	public function gotosubscribetoprivilegedpage(){
+
+		//session
+		$data['sess'] = $this->session->userdata("mysess_id");
+		$data['user_info'] = $this->session->userdata("user_info");
+		//session
+		
+		$this->load->view("subscribetoprivileged",$data);
+	}
 	public function subscribetoprivileged(){
 
 		//session
@@ -157,7 +166,7 @@ class User extends CI_Controller {
 			$this->load->view("subscribecomplete",$data);
 			//exit();
 		}
-		$this->load->view("subscribetoprivileged",$data);
+		
 	}
 	public function cancelevent(){
 

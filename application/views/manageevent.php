@@ -127,7 +127,7 @@
                                                     <div class="modal-body">
                                                         <p>You are about to delete one track url, this procedure is irreversible.</p>
                                                         <p>Do you want to proceed?</p>
-                                                        <p class="debug-url"></p>
+                                                        <!-- <p class="debug-url"></p> -->
                                                     </div>
                                                     
                                                     <div class="modal-footer">

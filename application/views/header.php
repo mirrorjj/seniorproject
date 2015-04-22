@@ -22,7 +22,7 @@
                     <li class="page-scroll">
                         <form class="navbar-form navbar-left" role="search" method="post" accept-charset="utf-8" action="<?=base_url('event/searchevent')?>">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="event_search" placeholder="Search">
+                                <input type="text" class="form-control" name="event_search" placeholder="ระบุคำค้นหา">
                             </div>
                             <input type="submit" name="btsave" class="btn btn-default" value="ค้นหา">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -95,7 +95,7 @@
                                         if($r['user_status'] == "user" || $r['user_status'] == "privileged user"){
                             ?>
                                 <li class="page-scroll">
-                                    <a href="<?=base_url('user/cancelevent')?>">ยกเลิกการเข้าร่วมกิจกรรม</a>
+                                    <a href="<?=base_url('user/cancelevent')?>">รายการกิจกรรมที่เข้าร่วม</a>
                                 </li>
                             <?php
                                         }
@@ -112,7 +112,7 @@
                                         if($r['user_status'] == "user"){
                             ?>
                                 <li class="page-scroll">
-                                    <a href="<?=base_url('user/subscribetoprivileged')?>">สมัครเป็น privileged user</a>
+                                    <a href="<?=base_url('user/gotosubscribetoprivilegedpage')?>">สมัครเป็น privileged user</a>
                                 </li>
                             <?php
                                         }

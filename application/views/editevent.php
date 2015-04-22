@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <br><br>
-                        <h2>แก้ไขกิจกรรม</h2>
+                        <h2>แก้ไขรายละเอียดกิจกรรม</h2>
                         <hr class="star-primary">
                     </div>
                 </div>

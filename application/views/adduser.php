@@ -104,14 +104,22 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>ชื่อผู้ใช้</label>
-                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username" required data-validation-required-message="Please enter your username.">
-                                    <p class="help-block text-danger"></p>
+                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้ (กรุณากรอกเป็นภาษาอังกฤษ หรือ ตัวเลขเท่านั้น)" name="username" required data-validation-required-message="Please enter your username.">
+                                    <p class="help-block text-danger">
+                                        <?php
+                                            if(!isset($query)){
+                                                echo "";
+                                            } else {
+                                                echo $wrong;
+                                            }
+                                        ?>
+                                    </p>
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>รหัสผ่าน</label>
-                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password" required data-validation-required-message="Please enter your password.">
+                                    <input type="password" class="form-control" placeholder="รหัสผ่าน (กรุณากรอกเป็นภาษาอังกฤษ หรือ ตัวเลขเท่านั้น)" name="password" required data-validation-required-message="Please enter your password.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>

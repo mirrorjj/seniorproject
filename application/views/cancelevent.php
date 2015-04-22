@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <br><br>
-                        <h2>ยกเลิกการเข้าร่วมกิจกรรม</h2>
+                        <h2>รายการกิจกรรมที่เข้าร่วม</h2>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                                                     <div class="modal-body">
                                                         <p>You are about to delete one track url, this procedure is irreversible.</p>
                                                         <p>Do you want to proceed?</p>
-                                                        <p class="debug-url"></p>
+                                                        <!-- <p class="debug-url"></p> -->
                                                     </div>
                                                     
                                                     <div class="modal-footer">
@@ -171,6 +171,7 @@
         </section>
     </body>
 
+    <br><br><br>
 
     <?php include 'footer.php';?>
 

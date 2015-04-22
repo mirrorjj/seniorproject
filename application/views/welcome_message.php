@@ -23,13 +23,30 @@
     <link href="<?=base_url('bootstrap/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- jQuery -->
+    <script src="<?=base_url('bootstrap/js/jquery.js')?>"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="<?=base_url('bootstrap/js/classie.js')?>"></script>
+    <script src="<?=base_url('bootstrap/js/cbpAnimatedHeader.js')?>"></script>
+
+    <!-- Contact Form JavaScript -->
+    <!-- <script src="<?=base_url('bootstrap/js/jqBootstrapValidation.js')?>"></script> -->
+    <!-- <script src="<?=base_url('bootstrap/js/contact_me.js')?>"></script> -->
+
+    <!-- Custom Theme JavaScript -->
+    <script src="<?=base_url('bootstrap/js/freelancer.js')?>"></script>
 
 </head>
 
@@ -47,7 +64,7 @@
                     <img class="img-responsive" src="<?=base_url('bootstrap/img/sports_icon.png')?>" width="400" height="400" alt="">
                     <div class="intro-text">
                         <span class="name">Meet & Do Activity Together</span>
-                        <span class="name">นัดพบและทำกิจกรรมร่วมกัน</span>
+                        <span class="name">พบปะและทำกิจกรรมร่วมกัน</span>
                         <hr class="star-light">
                         <span class="skills">Find New Friend - Find New Community - Exchange New Experience</span><br>
                         <span class="skills">พบเพื่อนใหม่ - พบสังคมใหม่ - แลกเปลี่ยนประสบการณ์ใหม่ๆ</span>
@@ -84,21 +101,128 @@
 
 
         <!-- Project One -->
-        <?php foreach($query as $item):?>
+        <?php
+            $counter = 0; 
+            foreach($query as $item){
+        ?>
         <div class="row" style="margin-left: 50px; margin-right: 50px; padding-left: 125px; padding-right: 125px; border:10px solid #ccc; background:#f5f5f5;-moz-border-radius:4px;-webkit-border-radius:10px;border-radius:10px;">
             <div class="col-md-7">
-                <a href="#">
+                <!-- <a href="#"> -->
                     <img class="img-responsive" src="<?= $item->event_picture ?>" style="width:400px; height:300px;" alt="">
-                </a>
+                <!-- </a> -->
             </div>
             <div class="col-md-5">
-                <h3><?= $item->event_name ?></h3>
+                <h3>ชื่อกิจกรรม : <?= $item->event_name ?></h3>
                 <h4>เจ้าของกิจกรรม : <?= $item->event_who_create ?></h4>
                 <h4>วันที่และเวลา <?= $item->event_newdatetime ?></h4>
                 <h4>สถานที่ : <?= $item->event_where ?></h4>
                 <p>รายละเอียด : <?= $item->event_detail ?></p>
-                <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a>
-                <a class="btn btn-success" href="#">เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></a>
+                
+                <!-- <a class="btn btn-info" href="#">0 ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></a> -->
+                <!-- <a class="btn btn-success" href="#">เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></a> -->
+                
+                <!-- Who Join Event -->
+
+                <div class="modal fade" id="whojoinevent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">รายชื่อผู้เข้าร่วมกิจกรรม</h4>
+                            </div>
+                        
+                            <div class="modal-body">
+                                <!-- <p>You are about to delete one track url, this procedure is irreversible.</p> -->
+                                <?php
+                                    foreach($querysql2 as $whojoin){
+                                        //for($i=0;$i<$numrows;$i++){
+                                            if($item->event_id == $whojoin['eventid']){
+                                                echo "<p>".$whojoin['who_join']."</p>";
+                                                
+                                                $counter++;
+                                                //$item['event_id']++;
+                                            }
+                                        //}
+
+                                    }
+                                    //$item['event_id'] = 0;
+                                    //$whojoin['eventid']++;
+                                ?>
+                                <!-- <p class="debug-url"></p> -->
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+                                <!-- <a href="#"  class="btn btn-success danger">ปิด</a> -->
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> ปิด</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <a data-href="delete.php?id=54" data-toggle="modal" data-target="#whojoinevent" href="#">Delete record #54</a> -->
+
+                <button type="button" class="btn btn-info" 
+                data-href="<?=base_url('user/joinevent')?><?php echo "/".$item->event_id ?>"
+                data-toggle="modal" data-target="#whojoinevent" href="#">
+                <?= $counter; ?> ผู้เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-user"></span></button>
+
+
+                <script>
+                    $('#whojoinevent').on('show.bs.modal', function(e) {
+                        $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
+                        
+                        $('.debug-url').html('URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
+                    });
+                </script>
+
+                <!-- End Who Join Event -->
+
+                <!-- Confirm Join Event -->
+
+                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">ยืนยันการเข้าร่วมกิจกรรม</h4>
+                            </div>
+                        
+                            <div class="modal-body">
+                                <!-- <p>You are about to delete one track url, this procedure is irreversible.</p> -->
+                                <p>กดปุ่ม "ตกลง" เพื่อยืนยันการเข้าร่วมกิจกรรม?</p>
+                                <!-- <p class="debug-url"></p> -->
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+                                <a href="#"  class="btn btn-success danger">ตกลง</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <a data-href="delete.php?id=54" data-toggle="modal" data-target="#confirm-delete" href="#">Delete record #54</a> -->
+
+                <button type="button" class="btn btn-success" 
+                data-href="<?=base_url('user/joinevent')?><?php echo "/".$item->event_id ?>"
+                data-toggle="modal" data-target="#confirm-delete" href="#">
+                เข้าร่วมกิจกรรม <span class="glyphicon glyphicon-ok"></span></button>
+
+
+                <script>
+                    $('#confirm-delete').on('show.bs.modal', function(e) {
+                        $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
+                        
+                        $('.debug-url').html('URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
+                    });
+                </script>
+
+                <!-- End Confirm Join Event -->
+
+
             </div>
         </div>
         
@@ -106,7 +230,10 @@
 
         <hr>
 
-        <?php endforeach;?>
+        <?php
+                $counter = 0; 
+            } //end foreach
+        ?>
 
 
     <!-- Portfolio Grid Section -->
@@ -257,6 +384,7 @@
     </div>
 
     <!-- Portfolio Modals -->
+    <!--
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -273,7 +401,7 @@
                             <hr class="star-primary">
                             <img src="<?=base_url('bootstrap/img/portfolio/badminton_icon.png')?>" class="img-responsive img-centered" alt="">
                             <p>แบดมินตัน (อังกฤษ: Badminton) เป็นกีฬาชนิดหนึ่ง ที่ใช้ไม้ตีลูก ลูกสำหรับใช้ตีนั้น เรียกกันมาช้านานว่า "ลูกขนไก่" เพราะสมัยก่อนกีฬานี้ใช้ขนของไก่มาติดกับลูกบอลทรงกลมขนาดเล็ก ปัจจุบันลูกขนไก่ผลิดจากขนเป็ดที่คัดแล้ว ลูกบอลทรงกลมขนาดเล็กที่ทำเป็นหัวลูกขนไก่ทำด้วยไม้คอร์ก [ขอบคุณข้อมูลจาก : th.wikipedia.org]</p>
-                            <!-- <ul class="list-inline item-details">
+                            <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
                                     </strong>
@@ -286,7 +414,7 @@
                                     <strong><a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
-                            </ul> -->
+                            </ul>
                             <button type="button" class="btn btn-default"><i class="fa fa-search"></i><a style="text-decoration:none; color:white;" href="<?=base_url('event/viewevent')?>" style="color:white"> ดูกิจกรรม</a> </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> ปิด</button>
                         </div>
@@ -480,31 +608,18 @@
             </div>
         </div>
     </div>
+-->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <!--
     <div class="scroll-top page-scroll">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
+-->
 
-    <!-- jQuery -->
-    <script src="<?=base_url('bootstrap/js/jquery.js')?>"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?=base_url('bootstrap/js/bootstrap.min.js')?>"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="<?=base_url('bootstrap/js/classie.js')?>"></script>
-    <script src="<?=base_url('bootstrap/js/cbpAnimatedHeader.js')?>"></script>
-
-    <!-- Contact Form JavaScript -->
-    <!-- <script src="<?=base_url('bootstrap/js/jqBootstrapValidation.js')?>"></script> -->
-    <!-- <script src="<?=base_url('bootstrap/js/contact_me.js')?>"></script> -->
-
-    <!-- Custom Theme JavaScript -->
-    <script src="<?=base_url('bootstrap/js/freelancer.js')?>"></script>
+    
 
 </body>
 
